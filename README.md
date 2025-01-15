@@ -18,6 +18,7 @@ Bu proje, Murat Yücedağ'ın eğitmenliğinde gerçekleştirilen C# Eğitim Kam
 <li>LINQ: Veri sorgulama ve işleme.</li>
 
 <h3>Proje Görüntüleri</h3>
+
 ![1](https://github.com/user-attachments/assets/627867a5-f07e-481f-9cde-6475f235af8b)
 ![2](https://github.com/user-attachments/assets/e79acac5-ce5e-47a5-9c9c-9646eb4e2955)
 ![3](https://github.com/user-attachments/assets/9bf6d839-9487-42cf-a45e-5773fa7b4afb)
