@@ -45,9 +45,64 @@ namespace FinancialCrm
 
         private void button4_Click(object sender, EventArgs e)
         {
-            FrmBilling frm = new FrmBilling();
+			FrmSpendings frm = new FrmSpendings();
+			frm.Show();
+			this.Hide();
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			FrmBilling frm = new FrmBilling();
+			frm.Show();
+			this.Hide();
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			FrmBanks frm = new FrmBanks();
+			frm.Show();
+			this.Hide();
+		}
+
+		private void button5_Click(object sender, EventArgs e)
+		{
+			FrmBankProcesses frm = new FrmBankProcesses();
+			frm.Show();
+			this.Hide();
+		}
+
+		private void button6_Click(object sender, EventArgs e)
+		{
+            FrmDashboard frm = new FrmDashboard();
             frm.Show();
-            this.Hide();
-        }
-    }
+            this.Hide();    
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			FrmCategory frm = new FrmCategory();
+			frm.Show();
+			this.Hide();
+		}
+
+		private void button7_Click(object sender, EventArgs e)
+		{
+			FrmSettings frm = new FrmSettings();
+			frm.Show();
+			this.Hide();
+		}
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			var result = MessageBox.Show("Programdan çıkmak istediğinizden emin misiniz?",
+								"Çıkış Onayı",
+								MessageBoxButtons.YesNo,
+								MessageBoxIcon.Question);
+
+			if (result == DialogResult.Yes)
+			{
+				Application.Exit();
+			}
+		}
+	}
 }

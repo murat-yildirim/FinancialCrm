@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FinancialCrmDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FinancialCrmDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BankProcesses">
           <Key>
             <PropertyRef Name="BankProccessId" />
@@ -30,9 +30,12 @@
             <PropertyRef Name="BillId" />
           </Key>
           <Property Name="BillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BillNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="BillTitle" Type="nvarchar" MaxLength="50" />
           <Property Name="BillAmount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="BillPriod" Type="nvarchar" MaxLength="50" />
+          <Property Name="BillPayStatus" Type="nvarchar" MaxLength="10" />
+          <Property Name="BillPayDate" Type="date" />
         </EntityType>
         <EntityType Name="Categories">
           <Key>
@@ -110,8 +113,7 @@
             <End Role="Spendings" EntitySet="Spendings" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FinancialCrmDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -136,15 +138,6 @@
           <Property Name="BankTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BankBalance" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="BankProcesses" Relationship="Self.FK_BankProcesses_Banks" FromRole="Banks" ToRole="BankProcesses" />
-        </EntityType>
-        <EntityType Name="Bills">
-          <Key>
-            <PropertyRef Name="BillId" />
-          </Key>
-          <Property Name="BillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BillAmount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="BillPriod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Categories">
           <Key>
@@ -210,7 +203,6 @@
         <EntityContainer Name="FinancialCrmDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BankProcesses" EntityType="Self.BankProcesses" />
           <EntitySet Name="Banks" EntityType="Self.Banks" />
-          <EntitySet Name="Bills" EntityType="Self.Bills" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="Spendings" EntityType="Self.Spendings" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -223,7 +215,20 @@
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Spendings" EntitySet="Spendings" />
           </AssociationSet>
+          <EntitySet Name="Bills" EntityType="FinancialCrmDbModel.Bills" />
         </EntityContainer>
+        <EntityType Name="Bills">
+          <Key>
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="BillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BillPriod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillPayStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillPayDate" Type="DateTime" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -249,16 +254,6 @@
                 <ScalarProperty Name="BankAccountNumber" ColumnName="BankAccountNumber" />
                 <ScalarProperty Name="BankTitle" ColumnName="BankTitle" />
                 <ScalarProperty Name="BankBalance" ColumnName="BankBalance" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Bills">
-            <EntityTypeMapping TypeName="FinancialCrmDbModel.Bills">
-              <MappingFragment StoreEntitySet="Bills">
-                <ScalarProperty Name="BillId" ColumnName="BillId" />
-                <ScalarProperty Name="BillTitle" ColumnName="BillTitle" />
-                <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
-                <ScalarProperty Name="BillPriod" ColumnName="BillPriod" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -298,6 +293,19 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="FinancialCrmDbModel.Bills">
+              <MappingFragment StoreEntitySet="Bills">
+                <ScalarProperty Name="BillPayDate" ColumnName="BillPayDate" />
+                <ScalarProperty Name="BillPayStatus" ColumnName="BillPayStatus" />
+                <ScalarProperty Name="BillPriod" ColumnName="BillPriod" />
+                <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+                <ScalarProperty Name="BillTitle" ColumnName="BillTitle" />
+                <ScalarProperty Name="BillNumber" ColumnName="BillNumber" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -59,8 +59,8 @@
 			this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.panel6 = new System.Windows.Forms.Panel();
-			this.panel7 = new System.Windows.Forms.Panel();
 			this.label3 = new System.Windows.Forms.Label();
+			this.panel7 = new System.Windows.Forms.Panel();
 			this.label5 = new System.Windows.Forms.Label();
 			this.panel5.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -132,6 +132,7 @@
 			this.button8.Text = "Çıkış Yap";
 			this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button8.UseVisualStyleBackColor = true;
+			this.button8.Click += new System.EventHandler(this.button8_Click);
 			// 
 			// button7
 			// 
@@ -144,6 +145,7 @@
 			this.button7.Text = "Ayarlar";
 			this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button7.UseVisualStyleBackColor = true;
+			this.button7.Click += new System.EventHandler(this.button7_Click);
 			// 
 			// button6
 			// 
@@ -156,6 +158,7 @@
 			this.button6.Text = "Dashboard";
 			this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button6.UseVisualStyleBackColor = true;
+			this.button6.Click += new System.EventHandler(this.button6_Click);
 			// 
 			// button5
 			// 
@@ -168,6 +171,7 @@
 			this.button5.Text = "Banka Hareketleri";
 			this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button5.UseVisualStyleBackColor = true;
+			this.button5.Click += new System.EventHandler(this.button5_Click);
 			// 
 			// btnBillForm
 			// 
@@ -180,6 +184,7 @@
 			this.btnBillForm.Text = "Giderler";
 			this.btnBillForm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnBillForm.UseVisualStyleBackColor = true;
+			this.btnBillForm.Click += new System.EventHandler(this.btnBillForm_Click);
 			// 
 			// button3
 			// 
@@ -192,6 +197,7 @@
 			this.button3.Text = "Faturalar";
 			this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
 			// button2
 			// 
@@ -204,6 +210,7 @@
 			this.button2.Text = "Bankalar";
 			this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
 			// button1
 			// 
@@ -216,6 +223,7 @@
 			this.button1.Text = "Kategoriler";
 			this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// panel2
 			// 
@@ -268,6 +276,7 @@
 			this.lblTotalBalance.Size = new System.Drawing.Size(107, 42);
 			this.lblTotalBalance.TabIndex = 7;
 			this.lblTotalBalance.Text = "0.00 ₺";
+			this.lblTotalBalance.Click += new System.EventHandler(this.lblTotalBalance_Click);
 			// 
 			// panel4
 			// 
@@ -339,6 +348,7 @@
 			this.chart2.Size = new System.Drawing.Size(326, 209);
 			this.chart2.TabIndex = 14;
 			this.chart2.Text = "chart2";
+			this.chart2.Click += new System.EventHandler(this.chart2_Click);
 			// 
 			// panel6
 			// 
@@ -347,14 +357,6 @@
 			this.panel6.Name = "panel6";
 			this.panel6.Size = new System.Drawing.Size(326, 39);
 			this.panel6.TabIndex = 15;
-			// 
-			// panel7
-			// 
-			this.panel7.Controls.Add(this.label5);
-			this.panel7.Location = new System.Drawing.Point(598, 223);
-			this.panel7.Name = "panel7";
-			this.panel7.Size = new System.Drawing.Size(326, 39);
-			this.panel7.TabIndex = 16;
 			// 
 			// label3
 			// 
@@ -366,6 +368,14 @@
 			this.label3.TabIndex = 0;
 			this.label3.Text = "Bankalar ve banka hesaplarındaki para miktarlarına \r\naşağıdaki grafikte bulunmakt" +
     "adır.";
+			// 
+			// panel7
+			// 
+			this.panel7.Controls.Add(this.label5);
+			this.panel7.Location = new System.Drawing.Point(598, 223);
+			this.panel7.Name = "panel7";
+			this.panel7.Size = new System.Drawing.Size(326, 39);
+			this.panel7.TabIndex = 16;
 			// 
 			// label5
 			// 
@@ -392,7 +402,9 @@
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel3);
 			this.Controls.Add(this.panel4);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "FrmDashboard";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Dashboard Formu";
 			this.Load += new System.EventHandler(this.FrmDashboard_Load);
 			this.panel5.ResumeLayout(false);

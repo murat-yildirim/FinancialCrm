@@ -15,8 +15,11 @@ namespace FinancialCrm.Models
     public partial class Bills
     {
         public int BillId { get; set; }
+        public string BillNumber { get; set; }
         public string BillTitle { get; set; }
         public Nullable<decimal> BillAmount { get; set; }
         public string BillPriod { get; set; }
+        public string BillPayStatus { get; set; }
+        public Nullable<System.DateTime> BillPayDate { get; set; }
     }
 }
